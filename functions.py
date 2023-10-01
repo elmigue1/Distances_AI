@@ -51,9 +51,9 @@ def bygroup(matrix,g):
   points = set(range(N))
   reference = random.choice(tuple(points))
   points.remove(reference)
-  l = np.min(matrix)
-  u = np.max(matrix)
-  span = u-l
+  lower = np.min(matrix)
+  upper = np.max(matrix)
+  span = upper-lower
   tresh = span/g
   for i in points:
     dist = matrix[reference,i]
@@ -62,30 +62,18 @@ def bygroup(matrix,g):
 
 def kn(matrix, k):
     N = len(matrix)
-    groups = np.zeros(N, dtype = int)  # Initialize groups with zeros (unassigned)
-    group_number = 0  # Start with group 1
+    groups = np.zeros(N, dtype = int) 
+    group_number = 0  
     unassigned_points = set(range(N))
     while unassigned_points:
-        # Pick a random unassigned point
         current_point = random.choice(tuple(unassigned_points))
         unassigned_points.remove(current_point)
-
-        # Get distances from the current point to all other points
         distances = matrix[current_point]
-
-        # Get the indices of the k closest unassigned points
         closest_points = sorted(unassigned_points, key=lambda x: distances[x])[:k]
-
-        # Assign the current point and its k closest unassigned points to the current group
         groups[current_point] = group_number
         groups[closest_points] = group_number
-
-        # Remove these points from the unassigned points set
         unassigned_points -= set(closest_points)
-
-        # Increment the group number for the next group
         group_number += 1
-
     return groups
 
 def final_groups(matrix, fun , k, n_iterations):
