@@ -18,21 +18,21 @@ Primero, crea un entorno virtual para el proyecto. Asegúrate de tener Python in
 ```bash
 python -m venv venv
 venv\Scripts\activate
-
+```
 #### En Mac/Linux:
 ```bash
 python -m venv venv
 venv\Scripts\activate
-
+```
 ### 2. Instalar dependencias:
-
+```bash
 pip install -r requirements.txt
-
+```
 ### 3. Ejecutar aplicación:
 Una vez que hayas instalado todas las dependencias y configurado la base de datos, puedes iniciar la aplicación ejecutando el archivo principal:
 ```bash
 python app.py
-
+```
 ### 4. Resultados:
 
 Una vez que la aplicación esté en ejecución, podrás acceder a la interfaz web. Los resultados de la aplicación se verán en la ruta /usuarios_html dentro del directorio donde hayas guardado la aplicación.
